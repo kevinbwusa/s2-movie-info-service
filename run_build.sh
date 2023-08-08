@@ -1,9 +1,9 @@
 echo "Start"
-IMAGE_NAME="tsrana1/s2-movie-info-service:${BUILD_NUMBER}"
+IMAGE_NAME="kevinbwusa/s2-movie-info-service:${BUILD_NUMBER}"
 echo "Creating Image..."
 echo "IMAGE_NAME--- $IMAGE_NAME"
 sudo docker build -t $IMAGE_NAME .
-sudo docker login -u tsrana1 -p${DOCKER_HUB}
+sudo docker login -u kevinbwusa -p${DOCKER_HUB}
 sudo docker push $IMAGE_NAME
 echo "Deploying Image to Kubernetes..."
 export KUBECONFIG=/home/ubuntu/kubeconfig/kubeConfig/kube-config-mil01-rana-cluster.yml

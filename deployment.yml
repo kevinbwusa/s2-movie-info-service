@@ -32,6 +32,6 @@ spec:
     spec:
       containers:
         - name: s2-movie-info-service
-          image: tsrana1/s2-movie-info-service:v1 
+          image: kevinbwusa/s2-movie-info-service:v1 
           ports:
             - containerPort: 8082
