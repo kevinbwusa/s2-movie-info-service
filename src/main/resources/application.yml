@@ -1,13 +1,13 @@
 spring:
-   application:
-      name: s2-movie-info-service
+  application:
+    name: s2-movie-info-service
 server:
-   port: ${PORT:8082}
+  port: ${PORT:8082}
 eureka:
-   client:
-      fetchRegistry: true
-      registryFetchIntervalSeconds: 5
-      serviceUrl:
-         defaultZone: ${EUREKA_URI:http://159.122.174.183:30761/eureka/}
-   instance:
-      preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://159.122.174.183:30761/eureka/}
+  instance:
+    preferIpAddress: true
