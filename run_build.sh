@@ -1,4 +1,7 @@
+#!/bin/bash
 echo "Start"
+BUILD_NUMBER="v1"
+DOCKER_HUB="docker-ng-staging.northgrum.com"
 IMAGE_NAME="kevinbwusa/s2-movie-info-service:${BUILD_NUMBER}"
 echo "Creating Image..."
 echo "IMAGE_NAME--- $IMAGE_NAME"
