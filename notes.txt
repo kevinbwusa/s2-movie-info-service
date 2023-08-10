@@ -1,0 +1,52 @@
+crc delete
+crc setup
+crc start
+
+
+oc login --token=sha256~WCy1phuAy50v0qWVXaLxMNE3v3E6ouecONfg2apKkqk --server=https://api.sandbox-m4.g2pi.p1.openshiftapps.com:6443
+oc status
+oc get all
+oc get all --selector app=hello1 -o name
+oc delete all --selector app=hello1 -o name
+oc delete imagestream hello1
+oc delete template docker-template
+oc get all --selector app=hello1 -o name
+cd ~/dev/workspaces/github/public/kevinbwusa/openshift/openshift-hello-world
+oc project kevinbwusa-dev
+
+oc create -f docker-template.yaml
+oc create -f pvc-template.yaml
+oc get template
+oc describe template docker-template
+oc new-app --template docker-template -p BRANCH_NAME=main -p APP_GIT_URL=https://github.com/kevinbwusa/openshift-hello-world -p PROJECT_NAME=kevinbwusa-dev -p APP_NAME=hello1
+oc status
+oc logs -f buildconfig/hello1
+oc get pods
+oc get svc
+oc status --suggest
+oc get pvc
+oc create -f ./pvc-template.yaml
+oc delete --all all
+oc get pod -w
+
+
+eval $(crc oc-env)
+oc login -u developer https://api.crc.testing:6443
+cd ~/dev/workspaces/github/public/kevinbwusa/openshift/openshift-hello-world
+oc project kevin-dev
+oc create -f docker-template.yaml
+oc create -f pvc-template.yaml
+oc get templates
+oc describe template docker-template
+oc new-app --template docker-template -p BRANCH_NAME=main -p APP_GIT_URL=https://github.com/kevinbwusa/openshift-hello-world -p PROJECT_NAME=kevin-dev -p APP_NAME=hello1
+oc status
+oc logs -f buildconfig/hello1
+oc get pods
+oc get svc
+oc delete template docker-template
+
+
+* dc/hello1 has no readiness probe to verify pods are ready to accept traffic or ensure deployment is successful.
+    try: oc set probe dc/hello1 --readiness ...
+* dc/hello1 has no liveness probe to verify pods are still running.
+    try: oc set probe dc/hello1 --liveness ...
